@@ -46,3 +46,13 @@ public class BinarySearchTree {
 		}
 	}
 
+//This will print the nodes out in a correctly aligned way starting from the bottom node max left
+	public void print() {
+		if (root == null) {
+			System.out.println("Tree is empty");
+		} else {
+			System.out.print("Root is ");
+			if (root != null) root.print();
+			printInorder(root);
+		}
+	}
