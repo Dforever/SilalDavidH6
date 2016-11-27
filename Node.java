@@ -60,3 +60,19 @@ public class Node {
 	    public void removeInstance() {
 			count = count - 1;
 	}
+
+	 //This will Compare the Node and all of its data to a Node
+	    public int compareTo(Node Comparison) {
+	        return contents.compareTo(Comparison.Contents());
+	    }
+
+		//Using a String this will Compare the data if the Node
+		public int compareTo(String Comparison) {
+	        return contents.compareTo(Comparison);
+	    }
+
+		//This will Print the present Node
+		public void print() {
+			System.out.println(Contents() + " " + getCount());
+		}
+}
