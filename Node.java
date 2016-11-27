@@ -35,3 +35,28 @@ public class Node {
 	    public int getCount() {
 	        return count;
     }
+
+    //These are the Mutators that will set the data of the Node
+	    public void Contents(String Contents) {
+	        contents = Contents;
+	    }
+
+		//This will set the left Node
+	    public void Left(Node NewLeft) {
+	        left = NewLeft;
+	    }
+
+		//This will set the right Node
+	    public void Right(Node NewRight) {
+	        right = NewRight;
+	    }
+
+		//This will add an Instance to the Counter
+	    public void addInstance() {
+	        count = count + 1;
+	    }
+
+	    //This will remove an Instance away from the Counter
+	    public void removeInstance() {
+			count = count - 1;
+	}
