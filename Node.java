@@ -8,3 +8,10 @@ public class Node {
     //count of instances
     private int count;
 
+//This is the Constructor with all the data
+	public Node(String Contents) {
+        contents = Contents;
+        left = null;
+        right = null;
+        count = 1;
+    }
