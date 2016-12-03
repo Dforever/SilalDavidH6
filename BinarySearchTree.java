@@ -87,3 +87,27 @@ public class BinarySearchTree {
 
 		return seeker;
 	}
+
+	//This will figure out whether the String is in the tree or not
+		public boolean search(String data) {
+			//Imitates delete to locate the node
+			Node master = root;
+			Node seeker = root;
+
+			int dataDiff = 0;
+			do {
+				dataDiff = seeker.compareTo(data);
+				if (dataDiff != 0) {
+					master = seeker;
+					if(dataDiff > 0){
+						seeker = seeker.Left();
+					} else {
+						seeker = seeker.Right();
+					}
+					if(seeker == null){
+						return false;
+					}
+				}
+			} while (dataDiff != 0);
+			return true;
+	}
