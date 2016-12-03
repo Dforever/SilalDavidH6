@@ -23,7 +23,7 @@ public class BinarySearchTree {
 				if (compareResult == 0) {
 					//The comparison result is found to be equal
 					//This will increment the new position
-					seeker.addInstance();
+					seeker.increment();
 					break;
 				} else if (compareResult > 0) {
 					//Since comparison reult is greater you go left
@@ -56,3 +56,15 @@ public class BinarySearchTree {
 			printInorder(root);
 		}
 	}
+
+//This is a Recursive Function that will print out the Nodes correctly aligned
+	private void printInorder(Node start) {
+		if(start != null) {
+			//go down the left side of this node
+			printInorder(start.Left());
+			if (start != null) start.print();
+			//go down the right side of this node
+			printInorder(start.Right());
+		}
+	}
+
