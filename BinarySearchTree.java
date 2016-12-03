@@ -68,3 +68,22 @@ public class BinarySearchTree {
 		}
 	}
 
+//This will retrieve the successor node for the present Delete Tree
+	private Node getSuccessor(Node deleteNode) {
+		Node seeker = null;
+		Node master = null;
+		Node current = deleteNode.Right();
+
+		while (current != null) {
+			master = seeker;
+			seeker = current;
+			current = current.Left();
+		}
+
+		if (seeker != deleteNode.Right()) {
+			seeker.Right(deleteNode.Right());
+			master.Left(seeker.Right());
+		}
+
+		return seeker;
+	}
