@@ -111,3 +111,74 @@ public class BinarySearchTree {
 			} while (dataDiff != 0);
 			return true;
 	}
+
+	//This will begin deleteing the node if it is there
+		public boolean delete(String data) {
+			Node master = root;
+			Node seeker = root;
+			boolean notGreater = false;
+			int dataDiff = 0;
+			do {
+				dataDiff = seeker.compareTo(data);
+				System.out.println("'" + seeker.Contents() + "'.compareTo('" + data + "') = " + dataDiff);
+				if (dataDiff != 0) {
+					master = seeker;
+					if(dataDiff > 0){
+						notGreater = true;
+						seeker = seeker.Left();
+					} else {
+						notGreater = false;
+						seeker = seeker.Right();
+					}
+					if(seeker == null){
+						return false;
+					}
+				}
+			} while (dataDiff != 0);
+
+			//This will find the node
+			if (seeker.getCount() <= 1) {
+				//This will delete the node
+				if (seeker.Left() == null && seeker.Right() == null) {
+					//No need to pick here as there will be no successor since Node has no child.
+					if(seeker==root) root = null;
+					if (!notGreater)
+						master.Right(null);
+					else
+						master.Left(null);
+				} else if (seeker.Left()==null) {
+					//Successor is automatically picked since the Node has only one child.
+					if (seeker==root)
+						root = seeker.Right();
+					else if (!notGreater)
+						master.Right(seeker.Right());
+					else
+						master.Left(seeker.Right());
+				} else if (seeker.Right() == null) {
+					//Successor is automatically picked since the Node has only one child.
+					if (seeker == root)
+						root = seeker.Left();
+					else if (!notGreater)
+						master.Right(seeker.Left());
+					else
+						master.Left(seeker.Left());
+				} else if (seeker.Left() != null && seeker.Right() != null) {
+					//The Node ends up having two children which gets complicated. From that the successor Node will need to be found.
+					Node successor = getSuccessor(seeker);
+					if (seeker == root)
+						root = successor;
+					else if (!notGreater)
+						master.Right(successor);
+					else
+						master.Left(successor);
+					successor.Left(seeker.Left());
+				}
+			} else {
+				//This will lower the count
+				seeker.decrement();
+			}
+
+			return true;
+		}
+
+}
