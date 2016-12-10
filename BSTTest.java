@@ -26,3 +26,15 @@ public class BSTTest {
 			choice = kybd.nextInt();
 		}
 	}
+
+	 //Will give a directory listing of the current directory, user picks option for file selection
+		private static File insertFile() {
+			File f = new File("."); // current directory
+			System.out.println(f.getName());
+
+			//Locating files that are *.txt through a filenamefilter being utilized
+			FilenameFilter textFilter = new FilenameFilter() {
+				public boolean accept(File dir, String name) {
+					return name.toLowerCase().endsWith(".txt");
+				}
+		};
