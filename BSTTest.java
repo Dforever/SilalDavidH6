@@ -63,3 +63,34 @@ public class BSTTest {
 				}
 				return null;
 	}
+
+
+	     //Will take regular expressions and sort through all characters that aren't a number or character
+	    public static String CleanInput(String input) {
+	        return input.replaceAll("[^A-Za-z0-9]","");
+	    }
+
+		 //Will place data into specific file
+		private static void insertFromFile(File filen, BinarySearchTree bst) throws FileNotFoundException {
+			int words = 0;
+			int lines = 0;
+			Scanner sc2 = new Scanner(filen);
+
+			//Will go through every line and read it
+			while (sc2.hasNextLine()) {
+				Scanner s2 = new Scanner(sc2.nextLine());
+				//Every word will be read in every line
+				while (s2.hasNext()) {
+					String s = s2.next();
+					String strin = CleanInput(s);
+					if (s.compareTo("") != 0) {
+						//Uncapitalized
+						bst.insert(strin.toLowerCase());
+						words++;
+					}
+				}
+				lines++;
+			}
+			System.out.println("Inserted " + words + " words from " + lines + " lines");
+		}
+}
