@@ -38,3 +38,28 @@ public class BSTTest {
 					return name.toLowerCase().endsWith(".txt");
 				}
 		};
+
+		//Using this filter to retrieve a list of files
+				File allfiles[] = f.listFiles(textFilter);
+				if (allfiles.length > 0) {
+					Scanner kybd = new Scanner(System.in);
+					//Will loop to find a number that is actually in the list
+					do {
+						int userInput = 0;
+						//Using the name and the index for oreder, will create a tally for all files
+						for (int i = 0; i < allfiles.length; i++) {
+							System.out.println(" " + (i+1) + " - " + allfiles[i].getName());
+						}
+						//Will print Enter your choice:
+						System.out.print("Enter your choice: ");
+						userInput = kybd.nextInt() -1;
+						//verify user input
+						if (userInput >= 0 && userInput < allfiles.length)
+							return allfiles[userInput];
+					} while (true);
+				} else {
+					//Will print Cannot find a .txt file in the current working directory no txt files are used
+					System.out.println("Cannot find a .txt file in the current working directory");
+				}
+				return null;
+	}
